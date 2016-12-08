@@ -1,0 +1,41 @@
+{% extends "block.html" %}
+{% block page_content %}  
+  <div class="container">
+      <div class="panel-primary">
+          <div class="panel-heading"> 
+            <h2>Contextual Classes</h2>
+            <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
+          </div>
+          <div class="panel-body">
+            <table class="table">
+              <thead>
+                <tr>                  
+                  <th>Description</th>
+                  <th>Type</th>
+                  <th>Email</th>
+                  <th>description</th>
+                  <th>Repair type</th>
+                  <th>Fundi</th>
+                  <th>Status</th>
+                  <th>Progress</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if repairs %}
+                  {% for repair in repairs %}
+                <tr>
+                  
+                    <td>repair[1]</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                  {% end for %}
+                {% end if %}       
+              </tbody>
+            </table>
+          </div>
+      </div>
+  </div>
+{% endblock %}

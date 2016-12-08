@@ -1,0 +1,104 @@
+{% extends "block.html" %}
+{% block page_content %}  
+  
+      <!-- <div class="panel-primary"> -->
+          <!-- <div class="panel-heading"> 
+            <h1>Contextual Classes</h2>
+            
+          </div>
+          <div class="panel-body"> -->
+            <div class="row">
+              <div class="col-lg-7">
+              <table class="table table-responsive">
+                <thead>
+                  <tr>                  
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Progress</th>
+                    <th>Fundi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if repairs %}
+                    {% for repair in repairs %}
+                  <tr>                  
+                    <td>{{ repair[3] }}</td>
+                    <td>{{ repair[4] }}</td>
+                    <td>{% if repair[5] == "1" %} Accepted {% else %} Rejected {% endif %}</td>
+                    <td>{{ repair[6] }}</td>
+                    <td>{{ repair[8] }}</td>
+                    <td><button onclick="edit({{repair[0]}},'{{repair[3]}}','{{repair[4]}}')" class="btn btn-success">Approve</button></td>
+                  </tr>
+                    {% endfor %}
+                  {% endif %}       
+                </tbody>
+              </table>
+              </div>
+              <div class="col-lg-5">  
+              <legend>APPROVAL</legend>                              
+                  <form method="POST" action="approval" role="form">
+                    </>      
+                    <input id="repair_id" name="repair_id" type="hidden" maxlength="50" class="form-control" required >
+                    <div class="form-group">
+                      <label class="control-label" for="Description">Description</label>
+                      <input id="description" type="Description" placeholder="Description" maxlength="25" class="form-control" length="40" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" for="Type">Type</label>
+                      <input id="type" type="text" placeholder="Description" maxlength="25" class="form-control" length="40" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" for="Email">Email</label>
+                      <input id="email" type="hidden" placeholder="Email Address" maxlength="25" class="form-control" length="40" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" for="status">Status</label>
+                      <select class="form-control" name="status" id="desc_type">
+                        <option value="0" >Rejected</option>
+                        <option value="1">Accepted</option>
+                                        
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" for="progress">Status</label>
+                      <select class="form-control" name="progress">
+                        <option value="Not Started" >Not Started</option>
+                        <option value="Started">Started</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Finished">Finished</option>
+                      </select>
+                    </div>                    
+                    <div class="form-group">
+                      <label class="control-label" for="">Repair Person</label>
+                      <select class="form-control" name="fundi">
+                        <option value="1">Kevin</option>
+                        <option value="2">Brian</option>
+                        <option value="3">Perez</option>                        
+                      </select>
+                    </div>
+                   <div class="form-group">
+              <button id="Submit" type="submit" class="btn btn-info btn-block">APPROVAL</button>
+            </div>            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+              function edit(id, desc, type){
+                var id_field=$('#repair_id')
+                var description=$("#description")
+                var desc_type = $("#type")
+                id_field.val(id)
+                description.val(desc)
+                desc_type.val(type)
+              }
+            </script>
+            
+          <!-- </div>
+      </div> -->
+    {% endblock %}
+  

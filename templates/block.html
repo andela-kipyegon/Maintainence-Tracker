@@ -1,0 +1,64 @@
+<html>
+  <head>
+    
+    <link rel="stylesheet" href="">
+    <title> Maintenance Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      .container {
+        max-width: 500px;
+        padding-top: 100px;
+      }
+      .navbar {
+        margin-bottom:5
+
+      }
+   </style>
+  </head>
+  </head>
+  <body>
+      <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Tracker</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+            {% if session.get("admin") == False %}                                 
+                <li ><a href="{{ url_for('add_repair') }}">Add Request</a></li>
+                <li><a href="#">View Request</a></li>              
+            {% endif %}
+            {% if session.get("admin") %}                     
+                <li ><a href="#">Add Repair Guys</a></li>
+                <li><a href="#">Resolve request</a></li>
+            {% endif %}     
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              {% if session.get("active") %}
+              <li><a href="logout">Logout</a></li>
+              {% else %}
+
+              <li><a href="{{ url_for('sign_in') }}">Sign in</a></li>
+              <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+              {% endif %}
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    <div class="container-fluid" style="padding: 10px">      
+    {% block page_content %} {% endblock %}      
+    </div>
+    <div id="footer">          
+    </div>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
